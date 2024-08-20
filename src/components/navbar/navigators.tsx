@@ -1,4 +1,4 @@
-import { HomeIcon, Share } from "lucide-react";
+import { Bug, HomeIcon, Share } from "lucide-react";
 
 export const headerNavList = [
   {
@@ -25,5 +25,10 @@ export const menuNavItems = [
     label: "Shares",
     path: "/shares",
     icon: <Share />,
+  },
+  {
+    label: "Debug issues",
+    path: "/debugs",
+    icon: <Bug />,
   },
 ];
