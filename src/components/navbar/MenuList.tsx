@@ -16,6 +16,7 @@ import MenuIcon from "./MenuIcon";
 import Image from "next/image";
 import { menuNavItems } from "./navigators";
 import Link from "next/link";
+import { LogInIcon } from "lucide-react";
 
 const MenuList = () => {
   const [open, setOpen] = useState(false);
@@ -50,6 +51,9 @@ const MenuList = () => {
             </li>
           ))}
         </ul>
+        <Link href='/login' className='text-lg hover:underline flex gap-4 items-center bg-white text-black rounded-xl p-4'>
+          <LogInIcon /> Login
+        </Link>
       </DrawerContent>
     </Drawer>
   );
