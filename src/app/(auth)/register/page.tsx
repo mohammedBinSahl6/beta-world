@@ -43,7 +43,7 @@ const Register = () => {
     setLoading(false);
   };
   return (
-    <div className="flex h-lvh items-center gap-10 bg-teal-950 text-white flex-col p-10">
+    <div className="flex h-lvh items-center gap-10 bg-teal-950 text-white flex-col p-10 animate-fade-in">
       <h1 className="text-4xl font-bold">Welcome to Beta World</h1>
       <p className="text-xl">Register to your account</p>
       <RegisterForm onSubmit={handleSubmit} isLoading={loading} />

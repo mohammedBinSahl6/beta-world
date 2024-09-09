@@ -16,9 +16,12 @@ import MenuIcon from "./MenuIcon";
 import Image from "next/image";
 import { menuNavItems } from "./navigators";
 import Link from "next/link";
-import { LogInIcon } from "lucide-react";
+import { LogInIcon, LogOut } from "lucide-react";
+import { signOut, useSession } from "next-auth/react";
+import { cn } from "@/lib/utils";
 
 const MenuList = () => {
+  const { status, data } = useSession();
   const [open, setOpen] = useState(false);
   return (
     <Drawer direction="left" open={open}>
@@ -32,28 +35,49 @@ const MenuList = () => {
       >
         <DrawerTitle>BETA WORLD</DrawerTitle>
 
-        <span className="flex flex-col gap-3 items-center">
+        <Link href="/profile" className="flex flex-col gap-3 items-center">
           <Image
-            src="/user-grey.png"
+            src={data?.user?.image || "/user-grey.png"}
             alt="User Profile"
             width={90}
             height={90}
-            className="rounded-full"
+            className={cn("rounded-full", {
+              "border-2 border-white": status === "authenticated",
+            })}
           />
-          <h2 className="text-xl font-bold text-center">User name</h2>
-        </span>
+          <h2 className="text-xl font-bold text-center">
+            {data?.user?.username || "Username"}
+          </h2>
+        </Link>
         <ul className="flex flex-col gap-5">
           {menuNavItems.map((item) => (
             <li key={item.label}>
-              <Link href={item.path} className="text-lg hover:underline flex gap-4 items-center">
+              <Link
+                href={item.path}
+                className="text-lg hover:underline flex gap-4 items-center"
+              >
                 {item.icon} {item.label}
               </Link>
             </li>
           ))}
         </ul>
-        <Link href='/login' className='text-lg hover:underline flex gap-4 items-center bg-white text-black rounded-xl p-4'>
-          <LogInIcon /> Login
-        </Link>
+        {status === "authenticated" ? (
+          <Button
+            variant={"secondary"}
+            className="text-lg hover:underline flex gap-4 items-center bg-white text-black rounded-xl p-4"
+            onClick={() => signOut({ callbackUrl: "/login" })}
+          >
+            <LogOut />
+            Logout
+          </Button>
+        ) : (
+          <Link
+            href="/login"
+            className="text-lg hover:underline flex gap-4 items-center bg-white text-black rounded-xl p-4"
+          >
+            <LogInIcon /> Login
+          </Link>
+        )}
       </DrawerContent>
     </Drawer>
   );

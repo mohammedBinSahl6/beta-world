@@ -42,7 +42,7 @@ const Login = () => {
   return (
     <div className="flex h-lvh items-center gap-10 container flex-col md:w-1/2">
       <Logo />
-      <h1 className="text-4xl font-bold">Hello again in Beta World</h1>
+      <h1 className="text-4xl font-bold text-center">Hello again in Beta World</h1>
       <p className="text-xl">Login to your account</p>
       <LoginForm onSubmit={handleSubmit} isLoading={loading} />
       <Link
