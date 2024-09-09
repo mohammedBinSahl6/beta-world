@@ -1,4 +1,6 @@
-import { User } from "@/lib/types";
+'use server'; 
+
+import { User } from "@/lib/types/types";
 import prisma from "@/lib/prisma";
 import { hash } from "bcrypt";
 

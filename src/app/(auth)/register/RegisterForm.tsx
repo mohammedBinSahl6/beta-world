@@ -41,7 +41,7 @@ const RegisterForm = (props: Props) => {
     <Form {...registerForm}>
       <form
         onSubmit={registerForm.handleSubmit(onSubmit)}
-        className="space-y-4 md:w-1/3"
+        className="space-y-4 md:w-1/3 text-black"
       >
          <FormField
           control={registerForm.control}

@@ -31,7 +31,7 @@ const LoginForm = (props: Props) => {
   });
 
   const { watch } = loginForm;
-  const usernameOrEmail = watch("email");
+  const email = watch("email");
   const password = watch("password");
 
   return (
@@ -75,7 +75,7 @@ const LoginForm = (props: Props) => {
         />
         <Button
           type="submit"
-          disabled={!usernameOrEmail || !password}
+          disabled={!email || !password}
           loading={isLoading}
         >
           Login
