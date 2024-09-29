@@ -13,6 +13,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import Link from "next/link";
 
 type Props = {
   onSubmit: (values: z.infer<typeof formSchema>) => Promise<void>;
@@ -41,40 +42,44 @@ const RegisterForm = (props: Props) => {
     <Form {...registerForm}>
       <form
         onSubmit={registerForm.handleSubmit(onSubmit)}
-        className="space-y-4 md:w-1/3 text-black"
+        className="space-y-4  text-black bg-white p-8  rounded-4xl flex flex-col items-center lg:w-1/3  "
       >
-         <FormField
-          control={registerForm.control}
-          name="first_name"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="First Name"
-                  {...field}
-                  className="text-base"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-         <FormField
-          control={registerForm.control}
-          name="last_name"
-          render={({ field }) => (
-            <FormItem>
-              <FormControl>
-                <Input
-                  placeholder="Last Name"
-                  {...field}
-                  className="text-base"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+        <p className="text-xl self-center text-center">Create your account</p>
+
+        <div className="flex items-center w-fit justify-center gap-x-2  ">
+          <FormField
+            control={registerForm.control}
+            name="first_name"
+            render={({ field }) => (
+              <FormItem className="flex flex-col basis-28 gap-y-1 items-center ">
+                <FormControl>
+                  <Input
+                    placeholder="F Name"
+                    {...field}
+                    className="text-base shadow-sm shadow-black p-2 "
+                  />
+                </FormControl>
+                <FormMessage className="text-center" />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={registerForm.control}
+            name="last_name"
+            render={({ field }) => (
+              <FormItem className="flex flex-col  items-center  basis-28 ">
+                <FormControl>
+                  <Input
+                    placeholder="L Name"
+                    {...field}
+                    className="text-base shadow-sm shadow-black w-full gap-y-4 "
+                  />
+                </FormControl>
+                <FormMessage className="text-center" />
+              </FormItem>
+            )}
+          />
+        </div>
         <FormField
           control={registerForm.control}
           name="username"
@@ -84,7 +89,7 @@ const RegisterForm = (props: Props) => {
                 <Input
                   placeholder="Username"
                   {...field}
-                  className="text-base"
+                  className="text-base shadow-sm shadow-black  w-full"
                 />
               </FormControl>
               <FormMessage />
@@ -97,7 +102,11 @@ const RegisterForm = (props: Props) => {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input placeholder="E-Mail" {...field} className="text-base" />
+                <Input
+                  placeholder="E-Mail"
+                  {...field}
+                  className="text-base shadow-sm shadow-black w-full"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -113,7 +122,7 @@ const RegisterForm = (props: Props) => {
                   placeholder="Passwort"
                   type="password"
                   {...field}
-                  className="text-base text-black"
+                  className="text-base text-black shadow-sm shadow-black w-full"
                 />
               </FormControl>
               <FormMessage />
@@ -124,10 +133,17 @@ const RegisterForm = (props: Props) => {
           type="submit"
           disabled={!email || !password}
           loading={isLoading}
-          variant={"secondary"}
+          variant={"default"}
+          className="bg-black text-white self-center rounded-lg"
         >
           Create Account
         </Button>
+        <Link
+          href="/login"
+          className=" text-sm hover:underline flex gap-4 items-center text-black rounded-xl p-4 self-center text-center font-bold"
+        >
+          Login if you already have an account
+        </Link>
       </form>
     </Form>
   );
