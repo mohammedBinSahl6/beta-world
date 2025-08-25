@@ -43,16 +43,9 @@ const Register = () => {
     setLoading(false);
   };
   return (
-    <div className="flex h-lvh items-center gap-10 bg-teal-950 text-white flex-col p-10 animate-fade-in">
-      <h1 className="text-4xl font-bold">Welcome to Beta World</h1>
-      <p className="text-xl">Register to your account</p>
+    <div className="flex h-lvh items-center gap-10 bg-lightgreen text-white flex-col p-10 animate-fade-in justify-center">
+      <h1 className="text-4xl font-bold text-center">Welcome to Beta World</h1>
       <RegisterForm onSubmit={handleSubmit} isLoading={loading} />
-      <Link
-        href="/login"
-        className="text-lg hover:underline flex gap-4 items-center text-white rounded-xl p-4"
-      >
-        Login if you already have an account
-      </Link>
     </div>
   );
 };

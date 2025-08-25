@@ -14,14 +14,20 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
-        "2xl": "1400px",
+        'sm': '640px',
+        'md': '768px',
+        'lg': '1024px',
+        'max-lg': { max: '1024px' },
+        '2xl': '1400px',
       },
+
     },
     extend: {
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        lightgreen: "#2CA48D",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -54,6 +60,7 @@ const config = {
         },
       },
       borderRadius: {
+        "4xl": "42px",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
